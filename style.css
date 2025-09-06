@@ -1,0 +1,249 @@
+/* Base Styles */
+:root {
+    --primary-color: #333;
+    --secondary-color: #0066cc;
+    --light-gray: #f8f8f8;
+    --medium-gray: #f0f0f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+header h2 {
+    margin: 0.5rem 0 0;
+    font-weight: normal;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Banner Styles */
+.banner {
+    width: 100%;
+    position: relative;
+    margin: 1rem 0;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (height/width = 9/16 = 0.5625) */
+    overflow: hidden;
+}
+
+.banner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Intro Section */
+.intro {
+    margin: 1.5rem 0;
+}
+
+.intro p {
+    padding: 1.5rem;
+    margin: 0 0 1.5rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.7;
+}
+
+/* Agenda Section */
+.agenda {
+    margin: 2rem 0;
+    padding: 0 0.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.agenda ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    list-style-type: none;
+    padding: 0;
+}
+
+.agenda li {
+    padding: 1rem;
+    background: var(--medium-gray);
+    border-radius: 6px;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.agenda li:before {
+    content: "•";
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+}
+
+/* Details Section */
+.details {
+    background-color: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.details p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.details a {
+    background-color: var(--secondary-color);
+    color: var(--light-gray);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.details a:hover {
+    background-color: var(--light-gray);
+    color: var(--secondary-color);
+    text-decoration: none;
+    transform: translateY(-4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 18px;
+    }
+
+    .agenda ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .details a {
+        margin: 0 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        padding: 0 2rem;
+    }
+
+    header {
+        padding: 2rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+    }
+
+    .intro, 
+    .agenda,
+    .details {
+        padding: 2rem;
+    }
+}
+
+/* Landscape mode for mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .banner img {
+        max-height: 40vh;
+    }
+    
+    .agenda ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Print styles */
+@media print {
+    .banner img,
+    .details a {
+        display: none;
+    }
+    
+    body {
+        padding: 0.5in;
+        font-size: 12pt;
+    }
+    
+    .intro, 
+    .agenda,
+    .details {
+        page-break-inside: avoid;
+    }
+}
